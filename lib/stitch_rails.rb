@@ -26,7 +26,7 @@ module Stitch
     end
   end
 
-  class Railtie < Rails::Railtie
+  class Railtie < ::Rails::Engine
     initializer 'stitch.configure_rails_initialization' do |app|
       app.assets.register_engine '.coffee', StitchyCoffeeScriptTemplate
     end
