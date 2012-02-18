@@ -5,15 +5,27 @@
 
 Gem::Specification.new do |s|
   s.name = "stitch_rails"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ian Yang"]
   s.date = "2012-02-18"
   s.description = "TODO: longer description of your gem"
   s.email = "me@iany.me"
+  s.extra_rdoc_files = [
+    "LICENSE.txt",
+    "README.rdoc"
+  ]
   s.files = [
-    "VERSION"
+    "Gemfile",
+    "Gemfile.lock",
+    "LICENSE.txt",
+    "README.rdoc",
+    "Rakefile",
+    "VERSION",
+    "lib/assets/javascripts/stitch_rails.js",
+    "lib/stitch_rails.rb",
+    "stitch_rails.gemspec"
   ]
   s.homepage = "http://github.com/doitian/stitch_rails"
   s.licenses = ["MIT"]
