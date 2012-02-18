@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "stitch_rails"
   gem.homepage = "http://github.com/doitian/stitch_rails"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "coffee CommonJS"
+  gem.description = "coffee CommonJS"
   gem.email = "me@iany.me"
   gem.authors = ["Ian Yang"]
   # dependencies defined in Gemfile
