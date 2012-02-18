@@ -2,8 +2,24 @@ module Stitch
   class StitchyCoffeeScriptTemplate < Tilt::Template
     self.default_mime_type = 'application/javascript'
 
+    @@default_bare = false
+
+    def self.default_bare
+      @@default_bare
+    end
+
+    def self.default_bare=(value)
+      @@default_bare = value
+    end
+
+    @@excludes = []
+
     def self.engine_initialized?
       defined? ::CoffeeScript
+    end
+
+    def self.excludes=(excludes)
+      @@excludes = excludes
     end
 
     def initialize_engine
@@ -11,11 +27,24 @@ module Stitch
     end
 
     def prepare
-      options[:bare] = true
+      if !options.key?(:bare)
+        options[:bare] = self.class.default_bare
+      end
     end
 
     def evaluate(scope, locals, &block)
-      @output ||= "\nrequire.define({'#{ module_name(scope) }': function(exports, require, module) {\n" + CoffeeScript.compile(data, options) + "\n}});\n"
+      name = module_name(scope)
+      if (name == 'stitch_rails') || @@excludes.include?(name)
+        @output ||= CoffeeScript.compile(data, options)
+      else
+        @output ||= <<JS
+require.define({
+  '#{name}': function(exports, require, module) {
+#{CoffeeScript.compile(data, options.merge(:bare => true))}
+  }
+});
+JS
+      end
     end
 
     private
@@ -27,6 +56,10 @@ module Stitch
   end
 
   class Railtie < ::Rails::Engine
+    config.before_configuration do
+      config.stitch = StitchyCoffeeScriptTemplate
+    end
+
     initializer 'stitch.configure_rails_initialization' do |app|
       app.assets.register_engine '.coffee', StitchyCoffeeScriptTemplate
     end
