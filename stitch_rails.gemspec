@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "stitch_rails"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ian Yang"]
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/assets/javascripts/stitch_rails.js",
+    "lib/assets/javascripts/stitch_rails.js.coffee",
     "lib/stitch_rails.rb",
     "stitch_rails.gemspec"
   ]
