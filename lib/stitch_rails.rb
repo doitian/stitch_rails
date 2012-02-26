@@ -1,3 +1,5 @@
+require 'tilt'
+
 module Stitch
   class StitchyCoffeeScriptTemplate < Tilt::Template
     self.default_mime_type = 'application/javascript'
