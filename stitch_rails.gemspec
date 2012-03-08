@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "stitch_rails"
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ian Yang"]
-  s.date = "2012-02-27"
+  s.date = "2012-03-08"
   s.description = "coffee CommonJS"
   s.email = "me@iany.me"
   s.extra_rdoc_files = [
@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/assets/javascripts/stitch_rails.js.coffee",
+    "lib/stitch/coffee_script_template.rb",
+    "lib/stitch/railtie.rb",
     "lib/stitch_rails.rb",
     "stitch_rails.gemspec"
   ]
