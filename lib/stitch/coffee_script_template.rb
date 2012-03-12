@@ -24,6 +24,10 @@ module Stitch
       @@excludes = excludes
     end
 
+    def self.javascripts_path
+      File.expand_path('../../assets/javascripts', __FILE__)
+    end
+
     def initialize_engine
       require_template_library 'coffee_script'
     end
