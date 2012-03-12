@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "stitch_rails"
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ian Yang"]
-  s.date = "2012-03-08"
+  s.date = "2012-03-12"
   s.description = "coffee CommonJS"
   s.email = "me@iany.me"
   s.extra_rdoc_files = [
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/doitian/stitch_rails"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.11"
+  s.rubygems_version = "1.8.10"
   s.summary = "coffee CommonJS"
 
   if s.respond_to? :specification_version then
