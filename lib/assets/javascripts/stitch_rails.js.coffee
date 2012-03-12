@@ -4,22 +4,20 @@ modules = {}
 cache = {}
 
 require = (name, root) ->
-  if module = cache[name]
-    return module
+  return cache[name] if name of cache
 
   path = expand(root, name)
-  if fn = modules[path] || modules[path = expand(path, './index')]
-    module = id: name, exports: {}
-    try
-      cache[name] = module.exports
-      fn(module.exports, ((name) -> require(name, dirname(path))), module)
-      cache[name] = module.exports
-    catch err
-      delete cache[name];
-      throw err
-  else
-    throw "module #{name} not found"
+  if fn = modules[path]
+    dir = dirname(path)
+  else if fn = modules[path + '/index']
+    dir = path
 
+  return throw "module #{name} not found" unless fn
+
+  return cache[path] if path of cache
+  module = id: name, exports: {}
+  fn(module.exports, ((name) -> require(name, dir)), module)
+  cache[path] = module.exports
 
 expand = (root, name) ->
   results = []
