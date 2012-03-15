@@ -45,8 +45,8 @@ module Stitch
       else
         @output ||= <<JS
 require.define({
-  '#{name}': function(exports, require, module) {
-#{CoffeeScript.compile(data, options.merge(:bare => true))}
+  #{name.inspect}: function(exports, require, module) {
+#{indent_lines(CoffeeScript.compile(data, options.merge(:bare => true)), 4)}
   }
 });
 JS
@@ -54,6 +54,9 @@ JS
     end
 
     private
+    def indent_lines(content, indention)
+      content.gsub(/^/, ' ' * indention)
+    end
     # this might need to be customisable to generate the desired module names
     # this implementation lops off the first segment of the path
     def module_name(scope)
