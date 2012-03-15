@@ -40,7 +40,7 @@ module Stitch
 
     def evaluate(scope, locals, &block)
       name = module_name(scope)
-      if (name == 'stitch_rails') || @@excludes.include?(name)
+      if (name == 'stitch_rails') || excluded?(name)
         @output ||= CoffeeScript.compile(data, options)
       else
         @output ||= <<JS
@@ -54,6 +54,10 @@ JS
     end
 
     private
+    def excluded?(name)
+      @@excludes.any? { |pattern| File.fnmatch(pattern, name) }
+    end
+
     def indent_lines(content, indention)
       content.gsub(/^/, ' ' * indention)
     end

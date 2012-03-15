@@ -25,7 +25,8 @@ module YourApp
     # file names listed here are not wraped in `require.define`, so they
     # are executed immediatly. Handy for an app start point. Otherwise you
     # have add an .js file to require your start file. Suffix should not be added here.
-    config.stitch.excludes = %w(application spec jasminerice)
+    # Glob pattern is also supported.
+    config.stitch.excludes = %w(application *_spec jasminerice)
   end
 end
 ```
