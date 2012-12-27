@@ -12,8 +12,9 @@ All `.coffee` file will be wrapped as `require.define`.
 
 **Gemfile**:
 
-    gem 'stitch_rails', '0.0.3'
-
+    group :assets do
+      gem 'stitch_rails', '~>0.0.7'
+    end
 
 **config/application.rb**:
 
